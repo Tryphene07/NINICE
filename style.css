@@ -563,3 +563,13 @@ body {
     transform: scale(1.05);
     box-shadow: 0 10px 20px rgba(0,0,0,0.1);
 }
+
+
+
+/* Style par défaut (Ordinateur) */
+.container { display: flex; }
+
+/* Style pour mobile (écrans de moins de 768px) */
+@media (max-width: 768px) {
+    .container { display: block; }
+}
