@@ -204,11 +204,11 @@ a { text-decoration: none; transition: var(--transition-smooth); }
     .menu-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
-@media (max-width: 768px) {
-    .nav-links { display: none; } /* On cachera ça pour le menu burger plus tard */
-    .hero-content h1 { font-size: 36px; }
+/*@media (max-width: 768px) {
+    /*.nav-links { display: none; } /* On cachera ça pour le menu burger plus tard */
+    /*.hero-content h1 { font-size: 36px; }
     .menu-grid { grid-template-columns: 1fr; } /* 1 seule colonne sur mobile */
-}
+
 
 .main-footer {
     background-color: #333;
@@ -355,30 +355,6 @@ a { text-decoration: none; transition: var(--transition-smooth); }
     transform: translateY(-3px);
     box-shadow: 0 10px 20px rgba;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
