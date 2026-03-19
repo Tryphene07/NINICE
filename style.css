@@ -1,0 +1,565 @@
+/* =========================================
+1. RESET & VARIABLES
+   ========================================= */
+:root {
+    --primary-orange: #ff9f43;
+    --primary-green: #6ab04c;
+    --text-dark: #333333;
+    --text-light: #ffffff;
+    --bg-light: #fffcf8;
+    --shadow-md: 0 5px 15px rgba(0,0,0,0.1);
+    --transition-smooth: all 0.4s ease-out; /* Transition de base douce */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+    font-family: 'Poppins', sans-serif; /* Police moderne */
+}
+
+body {
+    color: var(--text-dark);
+    background-color: var(--white);
+    line-height: 1.6;
+}
+
+.containers {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+a { text-decoration: none; transition: var(--transition-smooth); }
+
+/* =========================================
+2. HEADER & NAV (Ton Dégradé)
+   ========================================= */
+.main-header {
+    background: linear-gradient(135deg, var(--primary-orange) 0%, var(--primary-green) 100%);
+    padding: 20px 0;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.navbar { display: flex; justify-content: space-between; align-items: center; }
+
+/* Logo Bold */
+.logo { font-weight: 900; font-size: 28px; color: var(--text-light); }
+.logo span { font-weight: 300; opacity: 0.9; }
+
+.nav-links { display: flex; list-style: none; gap: 25px; align-items: center ; flex-direction: row; justify-content:  space-evenly}
+.nav-links a { color: var(--text-light); font-weight: 600; }
+.nav-links a:hover { color: #f1c40f; }
+
+.btn-cmd {
+    background-color: var(--text-light);
+    color: var(--primary-orange) !important;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-weight: 700;
+}
+
+/* =========================================
+3. SECTION HERO (Accueil)
+   ========================================= */
+.hero-section {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)),
+                url('https://images.unsplash.com/photo-1514362545857-3bc16c4c7d1b?q=80&w=1500') center/cover;
+    margin-top: -80px; /* Pour passer sous la navbar */
+}
+
+.hero-content { text-align: center; color: var(--text-light); }
+.hero-content h1 { font-size: 56px; font-weight: 900; margin-bottom: 20px; }
+.hero-content h1 span { color: var(--primary-orange); }
+.hero-content p { font-size: 18px; margin-bottom: 40px; opacity: 0.9; }
+
+.btn-decouvrir {
+    background-color: var(--primary-green);
+    color: var(--text-light);
+    padding: 15px 30px;
+    border-radius: 30px;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
+.btn-decouvrir:hover { transform: translateY(-3px); box-shadow: var(--shadow-md); }
+
+/* =========================================
+4. SECTION MENU & CARTES (CSS PARFAIT AVEC ANIMATIONS)
+   ========================================= */
+.menu-section { padding: 100px 0; }
+.section-title { text-align: center; font-size: 36px; margin-bottom: 60px; position: relative; padding-bottom: 15px; }
+.section-title::after { content: ''; position: absolute; width: 60px; height: 4px; background-color: var(--primary-orange); bottom: 0; left: 50%; transform: translateX(-50%); }
+
+/* Grille Grid pour aligner les cartes */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 colonnes sur PC */
+    gap: 30px;
+}
+
+/* --- STYLE DE LA CARTE --- */
+.plat-card {
+    background-color: var(--text-light);
+    border-radius: 15px;
+    overflow: hidden; /* Pour arrondir l'image aussi */
+    box-shadow: var(--shadow-md);
+    position: relative;
+    /* transition: var(--transition-smooth) est déjà définie dans root */
+    cursor: pointer;
+}
+
+/* --- ANIMATION 1 : EFFET DE SURVOL (Hover) SUR LA CARTE --- */
+.plat-card:hover {
+    transform: translateY(-12px) scale(1.03); /* La carte se lève légèrement */
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2); /* L'ombre s'agrandit */
+}
+
+/* Conteneur de l'image pour le zoom */
+.plat-img-container {
+    position: relative;
+    height: 220px;
+    overflow: hidden; /* Important pour que l'image ne dépasse pas */
+}
+
+.plat-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.6s ease; /* Transition spécifique pour le zoom */
+}
+
+/* --- ANIMATION 2 : ZOOM DE L'IMAGE AU SURVOL DE LA CARTE --- */
+.plat-card:hover .plat-img-container img {
+    transform: scale(1.15); /* L'image s'agrandit de 15% */
+}
+
+/* Style du Prix */
+.price {
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    background-color: var(--primary-green);
+    color: var(--text-light);
+    padding: 8px 20px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 1.1rem;
+    z-index: 10;
+    transition: var(--transition-smooth);
+}
+
+/* --- ANIMATION 3 : PULSATION DU PRIX AU SURVOL --- */
+.plat-card:hover .price {
+    animation: pulse 1.5s infinite; /* Effet de pulsation */
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(106, 176, 76, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(106, 176, 76, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(106, 176, 76, 0); }
+}
+
+.plat-info { padding: 25px; }
+.plat-info h3 { font-size: 22px; margin-bottom: 10px; color: var(--text-dark); }
+.plat-info p { font-size: 15px; color: #666; line-height: 1.6; }
+
+/* =========================================
+5. ANIMATIONS DE RÉVÉLATION AU SCROLL (reveal)
+   ========================================= */
+/* État initial (Caché et décalé vers le bas) */
+.reveal {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: all 0.8s ease-out; /* Transition douce de 0.8 seconde */
+    will-change: transform, opacity; /* Optimisation */
+}
+
+/* État animé (Visible et à sa position normale) */
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Petit délai pour les cartes du menu (Optionnel) */
+/* Pour que les cartes apparaissent les unes après les autres */
+.menu-grid .plat-card:nth-child(1) { transition-delay: 0.1s; }
+.menu-grid .plat-card:nth-child(2) { transition-delay: 0.2s; }
+.menu-grid .plat-card:nth-child(3) { transition-delay: 0.3s; }
+
+/* =========================================
+6. RESPONSIVE (Adaptation Mobile)
+   ========================================= */
+@media (max-width: 1024px) {
+    .menu-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+    .nav-links { display: none; } /* On cachera ça pour le menu burger plus tard */
+    .hero-content h1 { font-size: 36px; }
+    .menu-grid { grid-template-columns: 1fr; } /* 1 seule colonne sur mobile */
+}
+
+.main-footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 30px;
+}
+
+
+
+/* --- Détails verts sur les cartes --- */
+.plat-card {
+    border-bottom: 4px solid var(--primary-green); /* Ligne verte en bas de carte */
+}
+
+.tag-vert {
+    background-color: #e8f5e9;
+    color: var(--primary-green);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 10px;
+    border-radius: 5px;
+    text-transform: uppercase;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+/* --- Section Contact --- */
+.contact-section { padding: 80px 0; }
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    align-items: start;
+}
+
+.btn-contact {
+    display: block;
+    width: fit-content;
+    margin-bottom: 15px;
+    padding: 12px 25px;
+    border-radius: 10px;
+    font-weight: bold;
+    color: white;
+}
+
+.tel { background-color: var(--primary-orange); }
+.whatsapp { background-color: #25d366; } /* Vert WhatsApp officiel */
+
+/* Style du Formulaire */
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: #f9f9f9;
+    padding: 30px;
+    border-radius: 15px;
+}
+
+.contact-form input, .contact-form textarea {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.btn-submit {
+    background: linear-gradient(135deg, var(--primary-orange), var(--primary-green));
+    color: white;
+    border: none;
+    padding: 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-submit:hover {
+    transform: scale(1.02);
+    filter: brightness(1.1);
+}
+
+/* Adaptation mobile */
+@media (max-width: 768px) {
+    .contact-grid { grid-template-columns: 1fr; }
+}
+
+
+/* --- Style du Bouton WhatsApp (VERSION NETTOYÉE) --- */
+.btn-whatsapp-direct {
+    display: inline-flex;  /* Aligne icône + texte sur une ligne */
+    align-items: center;   /* Centre verticalement */
+    justify-content: center; /* Centre horizontalement l'icône et le texte */
+    gap: 12px;             /* Espace précis entre l'icône et le texte */
+    background-color: #25D366; 
+    color: white !important; /* Force la couleur blanche */
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 50px;   /* Bien arrondi */
+    font-weight: 700;
+    margin-top: 15px;      /* Donne de l'espace au-dessus du bouton */
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+/* L'icône elle-même */
+.whatsapp-icon {
+    font-size: 22px; 
+    display: flex; /* Enlève les marges de texte par défaut de l'icône */
+    align-items: center;
+    gap: 20px;
+    display: inline-block;
+}
+
+.btn-whatsapp-direct:hover {
+    background-color: #1ebd5a;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(37, 211, 102, 0.3);
+}
+
+
+/* Bouton de validation */
+.btn-submit-order {
+    width: 100%;
+    background: linear-gradient(135deg, var(--primary-orange), #e67e22);
+    color: white;
+    border: none;
+    padding: 18px;
+    border-radius: 12px;
+    font-size: 18px;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.btn-submit-order:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 20px rgba;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Grille des options */
+.options-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 35px;
+}
+
+.option-card {
+    cursor: pointer;
+    position: relative;
+}
+
+.option-card input {
+    display: none; /* On cache la checkbox */
+}
+
+/* Le contenu de la carte d'option */
+.option-content {
+    background: #fdfdfd;
+    border: 2px solid #eee;
+    border-radius: 20px;
+    padding: 20px 10px;
+    text-align: center;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+}
+
+.option-icon { font-size: 30px; margin-bottom: 5px; }
+.option-name { font-weight: 700; font-size: 14px; color: var(--text-dark); }
+.option-price { color: var(--primary-orange); font-weight: 800; font-size: 16px; }
+
+/* La petite coche invisible par défaut */
+.check-mark {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: var(--primary-green);
+    color: white;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    opacity: 0;
+    transform: scale(0);
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* --- ÉTAT QUAND L'OPTION EST SÉLECTIONNÉE --- */
+.option-card input:checked + .option-content {
+    border-color: var(--primary-green);
+    background-color: #f0f9f0;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(106, 176, 76, 0.1);
+}
+
+.option-card input:checked + .option-content .check-mark {
+    opacity: 1;
+    transform: scale(1);
+}
+
+/* Mobile : une seule colonne si c'est trop serré */
+@media (max-width: 500px) {
+    .options-grid { grid-template-columns: 1fr; }
+    .option-content { flex-direction: row; justify-content: space-around; padding: 15px; }
+}
+
+
+
+/* Petit effet "rouge" au survol de la carte Bissap */
+.plat-card:has(img[alt*="Bissap"]):hover {
+    border-bottom: 4px solid #b33939; /* Un rouge hibiscus pour rappeler la boisson */
+}
+
+/* On s'assure que l'icône de boisson est bien centrée */
+.icon-drink {
+    font-size: 1.1rem;
+    vertical-align: middle;
+}
+
+
+
+
+.footer-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.social-links {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.social-icon {
+    color: white;
+    font-size: 18px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    background: #444; /* Gris par défaut */
+    transition: 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+/* Couleurs Instagram au survol */
+.social-icon.insta:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(220, 39, 67, 0.4);
+}
+
+.social-icon.facebook:hover {
+    background-color: #1877F2;
+}
+
+
+
+
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth; /* Animation de défilement douce */
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #fcfcfc;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 20px;
+    background: #fff;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Effet d'apparition au scroll */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease-out;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Hover sur le menu */
+.menu-item {
+    transition: transform 0.3s ease;
+    padding: 20px;
+    background: white;
+    border-radius: 15px;
+}
+
+.menu-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+}

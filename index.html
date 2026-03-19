@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NINICE | Restaurant Authentique</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <header class="main-header">
+        
+            <div class="logo">NINICE</div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#contact">Contact</a></li>
+                <li><a href="#commander" class="btn-cmd">Commander</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="accueil" class="hero-section">
+            <div class="hero-content containers reveal">
+                <h1>Bienvenue chez <span>NINICE</span></h1>
+                <p>Découvrez une cuisine sincère, fraîche et passionnée.</p>
+                <a href="#menu" class="btn-decouvrir">Voir la Carte</a>
+            </div>
+        </section>
+
+        <section id="menu" class="menu-section containers">
+            <h2 class="section-title reveal">Nos Spécialités Ivoiriennes</h2>
+            
+            <div class="menu-grid">
+                
+                <article class="plat-card reveal">
+                    <div class="plat-img-container">
+                        <img src="http://localhost:5500/ninice/foutou.jpeg" alt="Foutou Sauce Graine">
+                        <span class="price">18€</span>
+                    </div>
+                    <div class="plat-info">
+                        <h3>Foutou Sauce Graine</h3>
+                        <p>Foutou de banane pilé à la main, accompagné de sa sauce graine onctueuse.</p>
+                    </div>
+                </article>
+
+                <article class="plat-card reveal">
+                    <div class="plat-img-container">
+                        <img src="http://localhost:5500/ninice/alloco.jpeg" alt="Alloco">
+                        <span class="price">8€</span>
+                    </div>
+                    <div class="plat-info">
+                        <h3>Alloco Croustillant</h3>
+                        <p>Bananes plantains frites, servies avec une sauce pimentée maison.</p>
+                    </div>
+                </article>
+
+                <article class="plat-card reveal">
+                    <div class="plat-img-container">
+                        <img src="https://images.unsplash.com/photo-1517093602195-b40af9688b46?q=80&w=600" alt="Yaourt aux fruits">
+                        <span class="price">6€</span>
+                    </div>
+                    <div class="plat-info">
+                        <h3>Le Crémeux NINICE</h3>
+                        <p>Yaourt brassé onctueux, coulis de mangue fraîche et granola maison.</p>
+                    </div>
+                </article>
+                
+
+                <article class="plat-card reveal">
+                    <div class="plat-img-container">
+                        <img src="http://localhost:5500/ninice/yaourt.jpeg" alt="Yaourt Frais NINICE">
+                        <span class="price">3€</span>
+                    </div>
+                    <div class="plat-info">
+                    <span class="tag-vert">Boisson Locale</span>
+                        <h3>Yaourt Frais <span class="icon-drink"></span></h3>
+                        <p>Notre yaourt local maison, infusion de fleurs d'hibiscus bio, légèrement sucré et servi glacé. L'indispensable de NINICE.</p>
+                    </div>
+                    </article>
+
+                <article class="plat-card reveal">
+                    <div class="plat-img-container">
+                        <img src="http://localhost:5500/ninice/bissap.jpeg" alt="Bissap Frais NINICE">
+                        <span class="price">3€</span>
+                    </div>
+                    <div class="plat-info">
+                    <span class="tag-vert">Boisson Locale</span>
+                        <h3>Bissap Frais <span class="icon-drink"></span></h3>
+                        <p>Infusion d'hibiscus bio, menthe fraîche et une touche de vanille. Servi glacé.</p>
+                    </div>
+                    </article>
+
+
+                    <article class="plat-card reveal">
+                        <div class="plat-img-container">
+                        <img src="http://localhost:5500/ninice/pastels.jpeg" alt="Pastels NINICE">
+                        <span class="price">3€</span>
+                    </div>
+                    <div class="plat-info">
+                    <span class="tag-vert">Pastels Locale</span>
+                        <h3>Pastels <span class="icon-drink">🥟</span></h3>
+                        <p>Pastels Maison croustillants 
+                            Petits chaussons dorés farcis au poisson ou à la viande,
+                            servis avec une sauce tomate .</p>
+                    </div>
+                    </article> 
+                </div>
+
+        </section>
+        
+
+<section id="commander" class="order-section containers reveal">
+    <h2 class="section-title">Passer une Commande</h2>
+    <form class="order-form">
+        
+
+        <div class="options-grid">
+    <label class="option-card">
+        <input type="checkbox" name="plat" value="foutou">
+        <div class="option-content">
+            <div class="option-icon">🥣</div>
+            <span class="option-name">Foutou Graine</span>
+            <span class="option-price">18€</span>
+            <div class="check-mark"><i class="fa-solid fa-circle-check"></i></div>
+        </div>
+    </label>
+
+    <label class="option-card">
+        <input type="checkbox" name="plat" value="alloco">
+        <div class="option-content">
+            <div class="option-icon">🍌</div>
+            <span class="option-name">Alloco</span>
+            <span class="option-price">8€</span>
+            <div class="check-mark"><i class="fa-solid fa-circle-check"></i></div>
+        </div>
+    </label>
+
+    <label class="option-card">
+        <input type="checkbox" name="plat" value="yaourt">
+        <div class="option-content">
+            <div class="option-icon">🥛</div>
+            <span class="option-name">Yaourt Maison</span>
+            <span class="option-price">6€</span>
+            <div class="check-mark"><i class="fa-solid fa-circle-check"></i></div>
+        </div>
+    </label>
+</div>
+    </form>
+</section>
+
+<form action="commander.php" method="POST" class="modern-order-form">
+    
+    <select name="retrait" required>
+        <option value="">Mode de retrait...</option>
+        <option value="emporter">À emporter</option>
+        <option value="livraison">Livraison (Île-de-France uniquement)</option>
+    </select>
+
+    <input type="text" name="contact" placeholder="Votre adresse ou numéro de téléphone" required>
+    
+    <button type="submit" class="btn-submit">Valider ma commande</button>
+</form>
+
+
+<div class="delivery-links">
+    <a href="#" class="btn-platform uber">UberEats</a>
+    <a href="#" class="btn-platform deliveroo">Deliveroo</a>
+</div>
+
+
+
+        <section id="contact" class="contact-section containers">
+    <h2 class="section-title reveal">Nous Contacter</h2>
+    
+    <div class="contact-grid">
+        <div class="contact-info reveal">
+            <h3>Réservations Rapides</h3>
+            <p>Appelez-nous directement ou envoyez un message :</p>
+            <a href="tel:+33634439318" class="btn-contact tel"><i class="fa-solid fa-phone phone-icon"></i> 06 34 43 93 18</a>
+            <a href="https://wa.me/33634439318" class="btn-contact whatsapp"><i class="fa-brands fa-whatsapp whatsapp-icon"></i> WhatsApp</a>
+            
+            
+            <div class="location">
+                <p>📍 18 Avenue Edouard Herriot, Le Plessis-Robinson</p>
+                <p>⏰ Mar-Dim : 12h-14h30 / 19h-22h30</p>
+            </div>
+        </div>
+
+        
+        <form class="contact-form reveal">
+            <input type="text" placeholder="Votre Nom" required>
+            <input type="email" placeholder="Votre Email" required>
+            <textarea placeholder="Votre message (ex: Réservation pour 4 personnes)" rows="5"></textarea>
+            <button type="submit" class="btn-submit">Envoyer le message</button>
+        </form>
+    </main>
+
+
+<footer class="main-footer">
+    <div class="containers">
+        <div class="footer-content">
+            <p>&copy; 2026 NINICE - Tous droits réservés</p>
+            <div class="social-links">
+                <span>Suivez-nous sur :</span>
+                <a href="https://instagram.com/nini_saveur" target="_blank" class="social-icon insta">
+                    <i class="fa-brands fa-instagram"></i> Instagram
+                </a>
+                <a href="#" class="social-icon facebook">
+                    <i class="fa-brands fa-facebook"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
